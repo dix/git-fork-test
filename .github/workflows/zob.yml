@@ -1,0 +1,42 @@
+name: Toudoummmm
+
+on:
+  - push
+  - workflow_dispatch
+
+
+jobs:
+  build:
+    name: GenPub
+    runs-on: ubuntu-latest
+    
+    #defaults:
+     # run:
+       # working-directory: ./commytho
+
+    #strategy:
+     # matrix:
+      #  node-version: [14.x]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+          persist-credentials: false 
+          fetch-depth: 0
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        cache-dependency-path: '**/package-lock.json'
+        node-version: 14.x
+        cache: 'npm'
+    - run: npm install
+    - name: Launch
+      run: npm run start -- --git.email=reg.dev@am35.fr --git.username=dixdix --outputfile=../cur/tmp.txt
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
+    - name: End
+      run: echo 'And... cut!'
