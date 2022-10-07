@@ -2,7 +2,8 @@ name: Toudoum
 
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '15 9 * * *'
+    - cron: '45 18 * * *'
 
 
 jobs:
