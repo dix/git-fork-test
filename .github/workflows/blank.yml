@@ -8,9 +8,9 @@ jobs:
     name: GenPub
     runs-on: ubuntu-latest
     
-    #defaults:
-      #run:
-      #  working-directory: ./topdf
+    defaults:
+      run:
+        working-directory: ./commytho
 
     #strategy:
      # matrix:
@@ -24,8 +24,6 @@ jobs:
           repository: dix/atoutscript
           persist-credentials: false 
           fetch-depth: 0
-    - name: Change dir
-      run: cd ./commytho
     - name: List
       run: ls -lai
     - name: Use Node.js
