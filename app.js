@@ -9,7 +9,7 @@ if (!(argv.git?.email && argv.git?.username && argv.outputfile)) {
     process.exit(42);
 }
 
-const numberCommits = Math.floor(Math.random() * 10);
+const numberCommits = Math.floor(Math.random() * 5);
 console.log(`Number of commits for today : ${numberCommits}`);
 
 // Let's go
