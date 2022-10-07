@@ -19,33 +19,20 @@ jobs:
       #  node-version: [14.x]
 
     steps:
-    - name: File structure
-      run: 
-        mkdir cmt
-        mkdir cur
     - name: Checkout
       uses: actions/checkout@v2
       with:
-          path: ./cmt
-          ref: feat/commytho
-          repository: dix/atoutscript
           persist-credentials: false 
           fetch-depth: 0
-    - name: List
-      run: ls -lai
     - name: Use Node.js
       uses: actions/setup-node@v2
       with:
         cache-dependency-path: '**/package-lock.json'
         node-version: 14.x
         cache: 'npm'
-    - run: 
-        cd cmt
-        npm install
+    - run: npm install
     - name: Launch
-      run:
-        cd cmt
-        npm run start -- --git.email=reg.dev@am35.fr --git.username=dixdix --outputfile=../cur/tmp.txt
+      run: npm run start -- --git.email=reg.dev@am35.fr --git.username=dixdix --outputfile=../cur/tmp.txt
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
