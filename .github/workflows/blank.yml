@@ -1,0 +1,44 @@
+name: Toudoum
+
+on:
+  push
+
+jobs:
+  build:
+    name: GenPub
+    runs-on: ubuntu-latest
+    
+    #defaults:
+      #run:
+      #  working-directory: ./topdf
+
+    #strategy:
+     # matrix:
+      #  node-version: [14.x]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+          ref: feat/commytho
+          repository: dix/atoutscript
+          persist-credentials: false 
+          fetch-depth: 0
+    - name: Change dir
+      run: cd ./commytho
+    - name: Use Node.js
+      uses: actions/setup-node@v2
+      with:
+        cache-dependency-path: '**/package-lock.json'
+        node-version: 14.x
+        cache: 'npm'
+    - run: npm install
+    - name: Launch
+      run: npm start
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
+    - name: End
+      run: echo 'And... cut!'
