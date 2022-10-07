@@ -31,7 +31,7 @@ jobs:
         cache: 'npm'
     - run: npm install
     - name: Launch
-      run: npm run start -- --git.email=reg.dev@am35.fr --git.username=dixdix --outputfile=../cur/tmp.txt
+      run: npm run start -- --git.email=reg.dev@am35.fr --git.username=dixdix --outputfile=tmp.txt
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
