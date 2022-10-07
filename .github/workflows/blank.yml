@@ -26,6 +26,8 @@ jobs:
           fetch-depth: 0
     - name: Change dir
       run: cd ./commytho
+    - name: List
+      run: ls -lai
     - name: Use Node.js
       uses: actions/setup-node@v2
       with:
