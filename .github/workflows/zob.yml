@@ -24,15 +24,25 @@ jobs:
       with:
           persist-credentials: false 
           fetch-depth: 0
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+          persist-credentials: false 
+          fetch-depth: 0
+          ref: feat/commytho
+          repository: dix/atoutscript
     - name: Use Node.js
       uses: actions/setup-node@v2
       with:
-        cache-dependency-path: '**/package-lock.json'
         node-version: 14.x
         cache: 'npm'
-    - run: npm install
+    - run:
+        ls -lai
+        cp ./atoutscript/commytho/app.js .
+        cp ./atoutscript/commytho/package.json .
+        npm install
     - name: Launch
-      run: npm run start -- --git.email=reg.dev@am35.fr --git.username=dixdix --outputfile=../cur/tmp.txt
+      run: npm run start -- --git.email=reg.dev@am35.fr --git.username=dixdix --outputfile=tmp.txt
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
