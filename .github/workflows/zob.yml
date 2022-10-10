@@ -37,6 +37,7 @@ jobs:
           path: ./atoutscript
     - run: |
         ls -lai
+        cp ./atoutscript/commytho/* .
     - name: Use Node.js
       uses: actions/setup-node@v2
       with:
