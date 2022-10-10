@@ -23,7 +23,10 @@ jobs:
       uses: actions/checkout@v2
       with:
           persist-credentials: false 
-          fetch-depth: 0
+          fetch-depth: 0`
+          
+    - run: |
+        ls -lai
     - name: Checkout
       uses: actions/checkout@v2
       with:
@@ -32,7 +35,7 @@ jobs:
           ref: feat/commytho
           repository: dix/atoutscript
     - run: |
-        ls -lai ..
+        ls -lai
     - name: Use Node.js
       uses: actions/setup-node@v2
       with:
